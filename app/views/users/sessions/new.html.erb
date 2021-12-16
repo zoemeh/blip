@@ -1,0 +1,25 @@
+<div class="flex justify-center items-center bg-indigo-100 h-screen">
+  <div>
+    <form method="post" class="space-y-6">
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <div>
+        <label class="block text-sm font-medium text-neutral-600 mb-1">Email</label>
+        <input  name="user[email]" type="email"  autofocus="true"
+                class="block w-full px-5 py-3 text-neutral-600 rounded-lg">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-neutral-600 mb-1">Password</label>
+        <input name="user[password]" type="password"  autocomplete="current-password"
+               class="block w-full px-5 py-3 text-neutral-600 rounded-lg">
+      </div>
+      <div class="flex items-center gap-2">
+        <label>Remember me</label>
+        <input name="user[remember_me]" type="checkbox">
+      </div>
+      <button type="submit" class="w-full bg-violet-500 px-6 py-2 rounded">Sign in</button>
+    </form>
+    <div>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
