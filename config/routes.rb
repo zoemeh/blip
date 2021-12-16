@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'timeline/index'
+  get 'timeline/mentions'
   devise_for :users
   get 'home/index'
   root 'home#index'
