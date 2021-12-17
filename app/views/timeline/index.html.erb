@@ -1,12 +1,7 @@
 <div class="grid grid-cols-4">
   <div id="content" class="col-span-3 border-2 border-gray-300">
     <div class="mb-2 p-2">
-      <p class="mb-1">What's happening?</p>
-      <form class="w-full flex" method="post" action="<%= blipit_path %>">
-        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-        <input name="blip[content]" class="flex-auto border-2 border-blue-800 mr-2">
-        <button class="flex-initial">Send</button>
-      </form>
+      <%= render Timeline::BlipFormComponent.new %>
     </div>
     <div class="divide-y divide-gray-200 px-3">
       <%= render Timeline::BlipComponent.with_collection @blips %>
