@@ -1,0 +1,42 @@
+<div id="profile-sidebar" class="bg-green-100 border-2 border-gray-200">
+  <div id="profile-info" class="p-2">
+    <div class="flex gap-2">
+      <span class="flex-initial font-semibold">Name</span>
+      <span class="flex-auto italic"><%= @user.realname %></span>
+    </div>
+    <div class="flex gap-2">
+      <span class="flex-initial font-semibold">Location</span>
+      <span class="flex-auto italic"><%= @user.location %></span>
+    </div>
+    <div class="flex gap-2">
+      <span class="flex-initial font-semibold">Web</span>
+      <span class="flex-auto italic"><%= @user.web %></span>
+    </div>
+    <div class="flex gap-2">
+      <span class="flex-initial font-semibold">Bio</span>
+      <span class="flex-auto italic"><%= @user.bio %></span>
+    </div>
+  </div>
+  <div class="flex p-2">
+    <div class="flex-auto">
+      <a href="<%= following_path(@user) %>">
+        <div><%= @user.followees.count %></div>
+        <div class="text-sm">following</div>
+      </a>
+    </div>
+    <div class="flex-auto">
+      <a href="<%= followers_path(@user) %>">
+        <div><%= @user.followers.count %></div>
+        <div class="text-sm">followers</div>
+      </a>
+    </div>
+    <div class="flex-auto">
+      <a href="<%= profile_path(@user) %>">
+        <div><%= @user.blips.count %></div>
+        <div class="text-sm">updates</div>
+      </a>
+    </div>
+  </div>
+  <div class="text-xl px-2 py-4"><a href="<%= profile_path(@user) %>">Updates</a></div>
+  <div class="text-xl px-2 py-4"><a href="#">Favorites</a></div>
+</div>

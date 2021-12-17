@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'profile/:username', to: 'profile#index', as: 'profile'
+  get 'profile/:username/followers', to: 'profile#followers', as: 'followers'
+  get 'profile/:username/following', to: 'profile#following', as: 'following'
 
   get 'timeline/index', as: 'timeline'
   get 'timeline/mentions', as:  "mentions"
