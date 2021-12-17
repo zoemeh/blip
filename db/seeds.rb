@@ -9,30 +9,34 @@
 
 
 users = []
-puts "Seeding users"
+puts "SEEDING USERS"
 user = User.create(email: "edu@edu.com", username: "edu",
                    realname: "Eduardo C.", password: "americano")
-users = (1..10).map do
-  User.create(email: Faker::Internet.email, username: Faker::Twitter.unique.screen_name,
-              realname: Faker::Name.name, password: 'americano')
+users = Parallel.map((1..100)) do
+    {email: Faker::Internet.email, username: Faker::Twitter.unique.screen_name,
+                realname: Faker::Name.name}
 end
-users.push(user)
+User.insert_all(users)
+users = User.all
 
-puts "Seeding blips"
-blips = (1..10).map do
+puts "SEEDING BLIPS"
+blips = Parallel.map((1..1000)) do
   text = Faker::Twitter.status[:text]
   if rand(1..3) == 1
     text += " @#{users.sample.username}"
   end
-  t = DateTime.now - (rand(5..500).minutes)
-  {user_id: users.sample.id, content: text, created_at: t, updated_at: t }
+  t = DateTime.now - (rand(1...500).minutes)
+  {user_id: users.sample.id, content: text, created_at: t, updated_at: t}
+end
+Blip.insert_all(blips)
+
+puts "SEEDING FOLLOWERS"
+followers = Parallel.map(users) do |u|
+  (1..rand(2..100)).map do
+    u2 = users.sample
+    t = DateTime.now - (rand(5..500).minutes)
+    {follower_id: u2.id, followee_id: u.id }
+  end
 end
 
-Blip.insert_all(blips)
-# Parallel.each(users) do |u|
-#   (1..rand(2..100)).each do
-#     u2 = users.sample
-#     if u2.nil? then binding.pry end
-#     u.follow! u2
-#   end
-# end
+Follower.insert_all(followers.flatten)
