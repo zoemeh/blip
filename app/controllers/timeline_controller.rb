@@ -5,6 +5,7 @@ class TimelineController < ApplicationController
   end
 
   def mentions
+    @blips = current_user.mentions.order(created_at: :desc).limit(100)
   end
 
   def blipit

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'profile/:username', to: 'profile#index', as: 'profile'
 
-  get 'timeline/index'
-  get 'timeline/mentions'
+  get 'timeline/index', as: 'timeline'
+  get 'timeline/mentions', as:  "mentions"
   post 'timeline/blipit', as: 'blipit'
   devise_for :users, controllers: { sessions: 'users/sessions' }
   get 'home/index'

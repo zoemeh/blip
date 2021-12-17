@@ -3,6 +3,7 @@
     <div class="mb-2 p-2">
       <%= render Timeline::BlipFormComponent.new %>
     </div>
+    <%= render Timeline::NavigationComponent.new active: :timeline %>
     <div class="divide-y divide-gray-200 px-3">
       <%= render Timeline::BlipComponent.with_collection @blips %>
     </div>

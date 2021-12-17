@@ -10,13 +10,13 @@
   <div class="flex">
     <div class="flex-auto">
       <a href="#">
-        <div>0</div>
+        <div><%= @user.followees.count %></div>
         <div>following</div>
       </a>
     </div>
     <div class="flex-auto">
       <a href="#">
-        <div>0</div>
+        <div><%= @user.followers.count %></div>
         <div>followers</div>
       </a>
     </div>

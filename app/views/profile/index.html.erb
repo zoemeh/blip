@@ -3,10 +3,10 @@
     <div class="flex mb-4 px-3">
       <img src="https://placeholder.pics/svg/50"
            class="flex-initial self-center w-16 h-16 mr-2 rounded-lg">
-      <h1>@<%= @user.username %></h1>
+      <h1  class="text-lg font-bold"><%= @user.username %></h1>
     </div>
     <div id="blips" class="divide-y divide-gray-200 px-3">
-      <%= render Timeline::BlipComponent.with_collection @blips %>
+      <%= render Profile::BlipComponent.with_collection @blips %>
     </div>
   </div>
   <div id="profile-sidebar" class="bg-green-100 border-2 border-gray-200">
@@ -28,5 +28,27 @@
         <span class="flex-auto italic"><%= @user.bio %></span>
       </div>
     </div>
+    <div class="flex p-2">
+      <div class="flex-auto">
+        <a href="#">
+          <div><%= @user.followees.count %></div>
+          <div class="text-sm">following</div>
+        </a>
+      </div>
+      <div class="flex-auto">
+        <a href="#">
+          <div><%= @user.followers.count %></div>
+          <div class="text-sm">followers</div>
+        </a>
+      </div>
+      <div class="flex-auto">
+        <a href="#">
+          <div><%= @user.blips.count %></div>
+          <div class="text-sm">updates</div>
+        </a>
+      </div>
+    </div>
+    <div class="text-xl px-2 py-4"><a href="#">Updates</a></div>
+    <div class="text-xl px-2 py-4"><a href="#">Favorites</a></div>
   </div>
 </div>

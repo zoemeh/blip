@@ -1,2 +1,9 @@
-<h1>Timeline#mentions</h1>
-<p>Find me in app/views/timeline/mentions.html.erb</p>
+<div class="grid grid-cols-4">
+  <div id="content" class="col-span-3 border-2 border-gray-300">
+    <%= render Timeline::NavigationComponent.new active: :timeline %>
+    <div class="divide-y divide-gray-200 px-3">
+      <%= render Timeline::BlipComponent.with_collection @blips %>
+    </div>
+  </div>
+  <%= render Timeline::SidebarComponent.new user: current_user %>
+</div>

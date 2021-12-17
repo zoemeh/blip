@@ -1,0 +1,5 @@
+<div id="timeline-tabs" class="flex gap-2 px-2">
+  <%  tabs.each do |t| %>
+    <a href="<%= t[1] %>" class="text-indigo-700 font-bold p-3 flex-auto text-center <%= "border-b-4 border-indigo-700" if current_page?(t[1]) %>"><%= t[0] %></a>
+  <% end %>
+</div>
