@@ -6,4 +6,21 @@ class TimelineController < ApplicationController
 
   def mentions
   end
+
+  def blipit
+    @blip = Blip.new(blip_params)
+    @blip.user = current_user
+    if @blip.save
+      redirect_to timeline_index_path
+    else
+      flash.alert = "I cannot post your blip"
+      redirect_back fallback_location: root_path
+      #render json: @blip.errors, status: :unprocessable_entity
+    end
+  end
+  private
+
+  def blip_params
+    params.require(:blip).permit(:content)
+  end
 end
