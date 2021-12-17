@@ -12,7 +12,7 @@ users = []
 puts "SEEDING USERS"
 user = User.create(email: "edu@edu.com", username: "edu",
                    realname: "Eduardo C.", password: "americano")
-users = Parallel.map((1..100)) do
+users = Parallel.map((1..500), in_processes: 5) do
     {email: Faker::Internet.email, username: Faker::Twitter.unique.screen_name,
                 realname: Faker::Name.name}
 end
@@ -20,7 +20,7 @@ User.insert_all(users)
 users = User.all
 
 puts "SEEDING BLIPS"
-blips = Parallel.map((1..1000)) do
+blips = Parallel.map((1..10000), in_processes: 5) do
   text = Faker::Twitter.status[:text]
   if rand(1..3) == 1
     text += " @#{users.sample.username}"
@@ -31,8 +31,8 @@ end
 Blip.insert_all(blips)
 
 puts "SEEDING FOLLOWERS"
-followers = Parallel.map(users) do |u|
-  (1..rand(2..100)).map do
+followers = Parallel.map(users, in_processes: 5) do |u|
+  (1..rand(2..500)).map do
     u2 = users.sample
     t = DateTime.now - (rand(5..500).minutes)
     {follower_id: u2.id, followee_id: u.id }

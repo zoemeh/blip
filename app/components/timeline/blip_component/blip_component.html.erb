@@ -2,7 +2,7 @@
   <img src="https://placeholder.pics/svg/50"
        class="flex-initial self-center w-16 h-16 mr-2 rounded-lg">
   <div class="flex-auto">
-    <a href="#" class="font-bold mr-1"> <%= username %></a>
+    <a href="<%= profile_path(username) %>" class="font-bold mr-1"> <%= username %></a>
     <span class="font-light text-xs"><%= realname %></span>
     <div><%== content %></div>
     <span class="font-light text-sm"><%= date %></span>

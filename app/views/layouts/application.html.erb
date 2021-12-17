@@ -11,12 +11,14 @@
   </head>
 
   <body>
-    <div class="flex justify-end mb-2 mx-3 py-2 px-4 gap-2">
-      <% [["Home", root_path], ["Your Profile", profile_path(current_user)], ["Settings", "#"]].each do |x| %>
-        <a href="<%= x[1] %>" class="flex-initial underline"><%= x[0] %></a>
-      <% end %>
-      <%= button_to('Logout', destroy_user_session_path, :method => :delete, class: "flex-initial underline") %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="flex justify-end mb-2 mx-3 py-2 px-4 gap-2">
+        <% [["Home", root_path], ["Your Profile", profile_path(current_user)], ["Settings", "#"]].each do |x| %>
+          <a href="<%= x[1] %>" class="flex-initial underline"><%= x[0] %></a>
+        <% end %>
+        <%= button_to('Logout', destroy_user_session_path, :method => :delete, class: "flex-initial underline") %>
+      </div>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
