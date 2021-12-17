@@ -6,8 +6,11 @@ class User < ApplicationRecord
 
   validates :realname, presence: true
   validates :username, uniqueness: true
-  
+
   has_many :blips
+  def to_param
+    username
+  end
 
   def mentions
     # FIXME: this matches blips where the mentions is inside words

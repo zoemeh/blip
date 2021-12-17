@@ -1,0 +1,32 @@
+<div class="grid grid-cols-4">
+  <div class="col-span-3">
+    <div class="flex mb-4 px-3">
+      <img src="https://placeholder.pics/svg/50"
+           class="flex-initial self-center w-16 h-16 mr-2 rounded-lg">
+      <h1>@<%= @user.username %></h1>
+    </div>
+    <div id="blips" class="divide-y divide-gray-200 px-3">
+      <%= render Timeline::BlipComponent.with_collection @blips %>
+    </div>
+  </div>
+  <div id="profile-sidebar" class="bg-green-100 border-2 border-gray-200">
+    <div id="profile-info" class="p-2">
+      <div class="flex gap-2">
+        <span class="flex-initial font-semibold">Name</span>
+        <span class="flex-auto italic"><%= @user.realname %></span>
+      </div>
+      <div class="flex gap-2">
+        <span class="flex-initial font-semibold">Location</span>
+        <span class="flex-auto italic"><%= @user.location %></span>
+      </div>
+      <div class="flex gap-2">
+        <span class="flex-initial font-semibold">Web</span>
+        <span class="flex-auto italic"><%= @user.web %></span>
+      </div>
+      <div class="flex gap-2">
+        <span class="flex-initial font-semibold">Bio</span>
+        <span class="flex-auto italic"><%= @user.bio %></span>
+      </div>
+    </div>
+  </div>
+</div>

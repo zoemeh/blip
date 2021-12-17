@@ -1,6 +1,8 @@
-<p class="mb-1">What's happening?</p>
+<p class="mb-1 text-lg">What's happening?</p>
 <form class="w-full flex" method="post" action="<%= blipit_path %>">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
   <input name="blip[content]" class="flex-auto border-2 border-blue-800 mr-2">
-  <button class="flex-initial">Send</button>
+  <%= render Shared::ButtonComponent.new type: :submit, classes: 'flex-initial' do %>
+    Send it
+  <% end  %>
 </form>

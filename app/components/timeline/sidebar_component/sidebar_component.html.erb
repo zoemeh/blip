@@ -29,7 +29,7 @@
   </div>
   <div class="flex flex-col gap-1 mt-3">
     <div><a href="#">Home</a></div>
-    <div><a href="#">@<%= @user.username %></a></div>
+    <div><a href="<%= profile_path(@user) %>">@<%= @user.username %></a></div>
     <div>
       <a class="flex">
         <span class="flex-auto">Direct Messsages</span>

@@ -19,8 +19,7 @@ class Timeline::BlipComponent < ViewComponent::Base
 
   def content
     h(@blip.content).gsub /@\w+/ do |mention|
-      #"<a href='#{profile_path(mention[1..-1])}' class='font-semibold'>#{mention}</a>"
-      "<a href='#' class='font-semibold'>#{mention}</a>"
+      "<a href='#{profile_path(mention[1..-1])}' class='font-semibold'>#{mention}</a>"
     end
   end
 end
