@@ -1,0 +1,43 @@
+<div class="bg-indigo-100 p-2">
+  <div class="flex mb-1">
+    <img src="https://placeholder.pics/svg/50"
+         class="flex-initial self-center mr-2">
+    <div class="flex-auto">
+      <div class="font-bold mr-1"><%= @user.username %></div>
+      <div class="font-light text-sm"><%= "blips" %></div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-auto">
+      <a href="#">
+        <div>0</div>
+        <div>following</div>
+      </a>
+    </div>
+    <div class="flex-auto">
+      <a href="#">
+        <div>0</div>
+        <div>followers</div>
+      </a>
+    </div>
+    <div class="flex-auto">
+      <a href="#">
+        <div>0</div>
+        <div>listed</div>
+      </a>
+    </div>
+  </div>
+  <div class="flex flex-col gap-1 mt-3">
+    <div><a href="#">Home</a></div>
+    <div><a href="#">@<%= @user.username %></a></div>
+    <div>
+      <a class="flex">
+        <span class="flex-auto">Direct Messsages</span>
+        <span>0</span>
+      </a>
+    </div>
+    <div><a href="#">Favorites</a></div>
+    <div><a href="#">Reblips</a></div>
+    <div><%= button_to('Logout', destroy_user_session_path, :method => :delete) %></div>
+  </div>
+</div>
